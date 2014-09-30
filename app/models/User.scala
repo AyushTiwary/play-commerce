@@ -21,7 +21,8 @@ class User extends BaseEntity with SecureUser {
   @Column(nullable = false, unique = true)
   var email: String = _
 
-  @Column(nullable = false)
+  // password can be nullable since we might allow other auth providers
+  @Column(length = 50)
   var password: String = _
 
   @Embedded
@@ -30,10 +31,18 @@ class User extends BaseEntity with SecureUser {
   @ManyToMany(fetch = FetchType.EAGER)
   var roles: JSet[Role] = new HashSet
   
-  @Embedded
-  @AttributeOverride(name = "name", column = new Column(nullable = false, length = 10))
-  var authProvider: AuthProvider = _
+  @Transient
+  var currentAuthProvider: AuthProvider = _
 
+  /**
+   * A user might log in using different providers, and one or more of
+   * them might have the same email address. So, we keep all of them in
+   * a separate table, linked with one-another, associated to the same 
+   * user-id.
+   */
+  @ElementCollection(fetch = FetchType.EAGER)
+  var linkedAuthProviders: JSet[AuthProvider] = new HashSet
+  
   override def toString = {
     """
       User[id: ${id},

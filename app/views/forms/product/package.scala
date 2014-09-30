@@ -3,8 +3,6 @@ package views.forms
 import play.api.data._
 import play.api.data.Forms._
 import dtos.product.CategoryDTO
-import daos.product.CategoryDAO
-import dtos.product.CategoryDTO
 
 package object product {
   val categoryForm = Form(
