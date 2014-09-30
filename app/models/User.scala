@@ -7,9 +7,10 @@ import java.util.{Set => JSet}
 import java.util.HashSet
 import javax.persistence.Inheritance
 import org.hibernate.FetchMode
+import _root_.security.core.{AuthProvider, User => SecureUser}
 
 @Entity
-class User extends BaseEntity {
+class User extends BaseEntity with SecureUser {
 
   @Column(nullable = false)
   var firstName: String = _
@@ -28,6 +29,10 @@ class User extends BaseEntity {
 
   @ManyToMany(fetch = FetchType.EAGER)
   var roles: JSet[Role] = new HashSet
+  
+  @Embedded
+  @AttributeOverride(name = "name", column = new Column(nullable = false, length = 10))
+  var authProvider: AuthProvider = _
 
   override def toString = {
     """
