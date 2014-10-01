@@ -16,5 +16,7 @@ forms.categories.table.idColumn=Id
 forms.categories.table.nameColumn=Name
 forms.categories.table.parentCategoryColumn=Parent Category
 
+forms.login.title=Login
+
 forms.save=Save
 forms.cancel=Cancel

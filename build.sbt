@@ -1,10 +1,8 @@
-name := """ecommerce"""
+name := """play-commerce"""
 
 version := "1.0-SNAPSHOT"
 
-
 lazy val root = (project in file(".")).enablePlugins(PlayScala, SbtWeb)
-
 
 scalaVersion := "2.11.2"
 
@@ -16,5 +14,6 @@ libraryDependencies ++= Seq(
   "org.scaldi" %% "scaldi-play" % "0.3.3",
   "org.json4s" %% "json4s-native" % "3.2.9",
   "org.json4s" %% "json4s-jackson" % "3.2.9",
+  "org.mindrot" % "jbcrypt" % "0.3m",
   cache
 )

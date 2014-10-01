@@ -1,5 +1,6 @@
 package app.module
 
+import controllers.security.SecurityController
 import scaldi.Module
 import controllers.Application
 import daos.RoleDAO
@@ -19,6 +20,7 @@ class WebModule extends Module {
   binding to new Application
   binding to new CategoryController
   binding to new ProductController
+  binding to new SecurityController
 
   binding to new RoleDAO
   binding to new RoleService

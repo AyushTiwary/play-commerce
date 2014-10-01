@@ -1,5 +1,6 @@
 package models
 
+import javax.persistence.CollectionTable
 import javax.persistence._
 import models.values.Address
 import scala.collection.immutable.Set

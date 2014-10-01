@@ -1,8 +1,11 @@
 package security.core
 
+import javax.persistence.Access
+import javax.persistence.AccessType
 import javax.persistence.Embeddable
 
 @Embeddable
+@Access(AccessType.FIELD)
 sealed abstract class AuthProvider(val name: String) {
   final override def toString = name
 }

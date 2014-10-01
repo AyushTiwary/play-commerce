@@ -2,8 +2,8 @@ package views.forms
 
 import play.api.data._
 import play.api.data.Forms._
-import dtos.product.LoginForm
-import dtos.product.SignupForm
+import dtos.security.LoginForm
+import dtos.security.SignupForm
 
 package object security {
   val loginForm = Form(

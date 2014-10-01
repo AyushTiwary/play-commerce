@@ -2,6 +2,7 @@
 
 GET     /javascriptRoutes           @controllers.Application.javascriptRoutes
 
+GET     /login                      @controllers.security.SecurityController.login
 
 # Home page
 GET     /                           @controllers.Application.index
