@@ -2,23 +2,23 @@ package views.forms
 
 import play.api.data._
 import play.api.data.Forms._
-import dtos.security.LoginForm
-import dtos.security.SignupForm
+import dtos.security.LoginFormDTO
+import dtos.security.SignupFormDTO
 
 package object security {
   val loginForm = Form(
     mapping(
       "email" -> email,
-      "password" -> text(minLength = 1, maxLength = 50)
-    ) (LoginForm.apply) (LoginForm.unapply)
+      "password" -> nonEmptyText(maxLength = 50)
+    ) (LoginFormDTO.apply) (LoginFormDTO.unapply)
   )
   
 
   val signupForm = Form(
     mapping(
       "email" -> email,
-      "password" -> text(minLength = 1, maxLength = 50),
-      "verifyPassword" -> text(minLength = 1, maxLength = 50)
-    ) (SignupForm.apply) (SignupForm.unapply)
+      "password" -> nonEmptyText(maxLength = 50),
+      "verifyPassword" -> nonEmptyText(minLength = 1, maxLength = 50)
+    ) (SignupFormDTO.apply) (SignupFormDTO.unapply)
   )
 }

@@ -1,16 +1,15 @@
 package dtos
 
 package object security {
-  case class LoginForm(email: String, password: String)
-  case class SignupForm(email: String, password: String, confirmPassword: String)
+  case class LoginFormDTO(email: String, password: String)
+  case class SignupFormDTO(email: String, password: String, confirmPassword: String)
 
-
-  object LoginForm {
+  object LoginFormDTO {
     val Email = "email"
     val Password = "password"
   }
 
-  object SignupForm {
+  object SignupFormDTO {
     val Email = "email"
     val Password = "password"
     val ConfirmPassword = "confirmPassword"

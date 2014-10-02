@@ -9,7 +9,7 @@ import services.RoleService
 import security.core.crypto.PasswordEncoder
 
 import views.forms.security.loginForm
-import dtos.security.LoginForm
+import dtos.security.LoginFormDTO
 
 class SecurityController(implicit inj: Injector) extends Controller {
   private val userService = inject[UserService]
@@ -24,8 +24,8 @@ class SecurityController(implicit inj: Injector) extends Controller {
   def login = Action { implicit request =>
     loginForm.bindFromRequest.fold(loginFormWithErrors => {
       Ok(views.html.security.login(loginFormWithErrors))
-    }, loginForm => {
-      Ok(views.html.index("Logged in Successfully"))
+    }, loginFormDTO => {
+      Redirect(controllers.routes.Application.index())
     })
   }
 }

@@ -20,3 +20,4 @@ forms.login.title=Login
 
 forms.save=Save
 forms.cancel=Cancel
+forms.submit=Submit

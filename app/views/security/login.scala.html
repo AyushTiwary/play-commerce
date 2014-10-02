@@ -1,15 +1,15 @@
-@(loginForm: Form[dtos.security.LoginForm])(implicit request: play.api.mvc.Request[play.api.mvc.AnyContent])
+@(loginForm: Form[dtos.security.LoginFormDTO])(implicit request: play.api.mvc.Request[play.api.mvc.AnyContent])
 
 @import models.product.Category
 @import helper._
 @import views.html.forms.inputHidden
 @import views.forms.FormHelpers.bootstrapVerticalFormFieldConstructor
-@import dtos.security.LoginForm
+@import dtos.security.LoginFormDTO
 
 
 @title = @{Messages("forms.login.title")}
 
-@action = @{controllers.product.routes.CategoryController.addCategory()}
+@action = @{controllers.security.routes.SecurityController.login()}
 
 @main(title = title) {
     <div class="col-sm-2">
@@ -17,11 +17,11 @@
     </div>
     <div class="col-sm-7">
       @form(action = action, args = 'class -> "well") {
-      @inputText(loginForm(LoginForm.Email), 'class -> "form-control")
-      @inputPassword(loginForm(LoginForm.Password), 'class -> "form-control")
+      @inputText(loginForm(LoginFormDTO.Email), 'class -> "form-control")
+      @inputPassword(loginForm(LoginFormDTO.Password), 'class -> "form-control")
       <div class="form-group">
         <button type="submit" class="btn btn-primary">               
-          @Messages("forms.save")
+          @Messages("forms.submit")
         </button>
       </div>
       }

@@ -9,7 +9,7 @@ final class BCryptPasswordEncoder(
   val random: Option[SecureRandom] = None
 ) extends PasswordEncoder {
 
-  assert(rounds.isDefined || rounds.get > 0)
+  assert(rounds.isEmpty || rounds.get > 0)
 
   def encode(plainTextPassword: String) = {
     val numRounds = if (rounds.isDefined && rounds.get > 0) rounds.get else BCryptPasswordEncoder.DefaultRounds
