@@ -16,7 +16,13 @@ import services.product.CategoryService
 import daos.product.ProductDAO
 import services.product.ProductService
 
+import security.core.crypto.BCryptPasswordEncoder
+import security.core.crypto.PasswordEncoder
+
 class WebModule extends Module {
+
+  bind [PasswordEncoder] to new BCryptPasswordEncoder
+
   binding to new Application
   binding to new CategoryController
   binding to new ProductController
